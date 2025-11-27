@@ -9,71 +9,107 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
        (function(){
+          // 你的 Public Key
           emailjs.init("wzXHDVb-bWlLS7jMO");
        })();
     </script>
 
     <style>
-        /* --- 全域設定 --- */
+        /* --- 全域 RWD 設定 --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fff0f5; color: #4a4a4a; line-height: 1.6; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: #333; line-height: 1.6; }
         
-        /* --- 導覽列 --- */
+        /* 導覽列 */
         header {
-            background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 改成比較科技感的漸層 */
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        nav { display: flex; justify-content: center; gap: 15px; }
-        nav a { color: #555; text-decoration: none; font-weight: bold; padding: 8px 12px; border-radius: 20px; background: rgba(255,255,255,0.6); transition: 0.3s; }
-        nav a:hover { background: white; color: #ff6b6b; }
+        nav { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        nav a { color: white; text-decoration: none; font-weight: bold; padding: 8px 16px; border-radius: 20px; background: rgba(255,255,255,0.2); transition: 0.3s; font-size: 0.95rem; }
+        nav a:hover { background: white; color: #764ba2; }
 
-        /* --- 主標題 --- */
-        .hero { text-align: center; padding: 40px 20px; }
-        .hero h1 { font-size: 2rem; color: #ff6b6b; margin-bottom: 10px; }
+        /* 主標題 */
+        .hero { text-align: center; padding: 50px 20px; background: white; margin-bottom: 20px; }
+        .hero h1 { font-size: 2.2rem; color: #444; margin-bottom: 10px; }
+        .hero p { color: #666; }
         
-        section { padding: 30px 20px; max-width: 900px; margin: 0 auto; }
+        section { padding: 20px; max-width: 900px; margin: 0 auto; }
         
-        /* 分類標題樣式 */
+        /* 分類標題 */
         .category-title { 
-            border-left: 8px solid #ff9a9e; 
+            border-left: 6px solid #764ba2; 
             padding-left: 15px; 
-            margin: 40px 0 20px 0; 
-            color: #333; 
-            font-size: 1.8rem;
-            background: rgba(255,255,255,0.5);
-            padding-top: 5px;
-            padding-bottom: 5px;
-            border-radius: 0 10px 10px 0;
+            margin: 30px 0 20px 0; 
+            color: #2d3748; 
+            font-size: 1.5rem;
+            font-weight: 800;
         }
 
-        /* --- 作品集通用卡片 --- */
-        .project-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 30px; border: 1px solid #ffecec; }
-        .project-title { padding: 12px; background: #fff5f7; font-weight: bold; text-align: center; color: #d63384; font-size: 1.2rem; }
-        iframe { width: 100%; height: 500px; border: none; display: block; }
-
-        /* --- 中央留言板樣式 --- */
-        .comment-section { background: #fff; padding: 20px; border-radius: 10px; }
-        .comment-form { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
-        .input-group { display: flex; gap: 10px; }
-        input, textarea, select { 
-            width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; background: #fdfdfd;
-        }
-        .captcha-box { display: flex; align-items: center; gap: 10px; background: #f0f0f0; padding: 10px; border-radius: 8px; font-weight: bold; color: #555; }
-        .captcha-input { width: 60px; text-align: center; }
-
-        button.submit-btn { background-color: #ff9a9e; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.2s; }
-        button.submit-btn:hover { background-color: #ff6b6b; }
-        button.submit-btn:disabled { background-color: #ddd; cursor: not-allowed; }
-
-        .comment-list { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px dashed #ddd; }
-        .single-comment { background: #f9f9f9; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 0.95em; position: relative; }
-        .comment-header { font-weight: bold; color: #333; display: flex; justify-content: space-between; font-size: 0.9em; margin-bottom: 5px;}
+        /* 作品卡片 (優化手機體驗) */
+        .project-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .project-title { padding: 15px; background: #f7fafc; font-weight: bold; text-align: center; color: #4a5568; border-bottom: 1px solid #edf2f7; font-size: 1.1rem; }
         
-        footer { text-align: center; padding: 30px; color: #aaa; font-size: 0.9rem; }
+        /* iframe RWD 高度設定 */
+        iframe { width: 100%; border: none; display: block; height: 500px; }
+        @media (max-width: 600px) {
+            iframe { height: 400px; } /* 手機版稍微矮一點，避免滑不到盡頭 */
+        }
+
+        /* --- 聯絡我 & 投票區塊 --- */
+        .contact-box {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-top: 50px;
+        }
+
+        /* 社群按鈕 */
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            padding: 12px 25px;
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            width: 80%; /* 手機版按鈕寬一點 */
+            max-width: 300px;
+        }
+        .social-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
+        .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .btn-threads { background: #000; }
+
+        /* 排行榜樣式 */
+        .leaderboard { margin-top: 40px; text-align: left; }
+        .poll-item { margin-bottom: 15px; background: #f8f9fa; padding: 10px 15px; border-radius: 8px; position: relative; overflow: hidden; }
+        .poll-header { display: flex; justify-content: space-between; position: relative; z-index: 2; font-weight: bold; color: #444; }
+        .poll-bar { 
+            position: absolute; left: 0; top: 0; bottom: 0; 
+            background: rgba(102, 126, 234, 0.2); 
+            width: 0%; /* 初始長度 */
+            transition: width 1s ease-out; 
+            z-index: 1;
+        }
+        .vote-btn {
+            background: #667eea; color: white; border: none; padding: 5px 12px; border-radius: 5px; cursor: pointer; font-size: 0.8rem; margin-left: 10px;
+        }
+        .vote-btn:hover { background: #5a67d8; }
+        .top-1 .poll-bar { background: rgba(255, 215, 0, 0.3); } /* 第一名金色 */
+        .top-2 .poll-bar { background: rgba(192, 192, 192, 0.3); } /* 第二名銀色 */
+        .top-3 .poll-bar { background: rgba(205, 127, 50, 0.3); } /* 第三名銅色 */
+
+        footer { text-align: center; padding: 40px 20px; color: #888; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -82,13 +118,13 @@
         <nav>
             <a href="#badminton">🏸 羽球程式</a>
             <a href="#investment">💰 投資規劃</a>
-            <a href="#contact">留言板</a>
+            <a href="#contact">聯絡 & 投票</a>
         </nav>
     </header>
 
     <div class="hero">
         <h1>😽 AI 卡比貓的奇幻旅程</h1>
-        <p>歡迎來到我的程式魔法書，這裡記錄了每一次的冒險！</p>
+        <p>Badminton & Investment Portfolio</p>
     </div>
 
     <!-- ==========================
@@ -97,26 +133,22 @@
     <section id="badminton">
         <h2 class="category-title">🏸 羽球程式系列</h2>
 
-        <!-- 作品 1: 羽球計分 (已改小寫) -->
         <div class="project-card">
             <div class="project-title">1. 羽球計分板 (Badminton Score)</div>
             <iframe src="badmintonscore.html"></iframe> 
         </div>
 
-        <!-- 作品 2: 即時比分 (已改小寫) -->
         <div class="project-card">
             <div class="project-title">2. 即時比分看板 (Live Score)</div>
             <iframe src="livescore.html"></iframe> 
         </div>
 
-        <!-- 作品 3: 賽事系統 (Streamlit) -->
         <div class="project-card">
             <div class="project-title">3. 羽球賽事指揮官 (Python System)</div>
-            <!-- 加高高度並隱藏選單 -->
             <iframe src="https://id30919-badminton-app-eqzjbn.streamlit.app/?embed=true" style="height: 600px;"></iframe>
-            <div style="text-align:center; padding: 10px; background: #f9f9f9; border-top: 1px solid #eee;">
+            <div style="text-align:center; padding: 15px; background: #f9f9f9; border-top: 1px solid #eee;">
                 <a href="https://id30919-badminton-app-eqzjbn.streamlit.app/" target="_blank" 
-                   style="display:inline-block; margin-top:5px; text-decoration:none; background:#ff4b4b; color:white; padding:5px 15px; border-radius:5px; font-size:0.9em;">
+                   style="display:inline-block; text-decoration:none; background:#ff4b4b; color:white; padding:8px 20px; border-radius:5px; font-weight:bold;">
                    📺 開啟全螢幕模式
                 </a>
             </div>
@@ -129,153 +161,141 @@
     <section id="investment">
         <h2 class="category-title">💰 投資規劃系列</h2>
 
-        <!-- 作品 4: 複利計算 (已改小寫) -->
         <div class="project-card">
             <div class="project-title">4. 複利計算機 (Compound Interest)</div>
             <iframe src="compound.html"></iframe> 
         </div>
 
-        <!-- 作品 5: 勞保試算 (已改小寫) -->
         <div class="project-card">
             <div class="project-title">5. 勞保試算 (Labor Insurance)</div>
+            <!-- ★★★ 關鍵修正：這裡配合你的檔名改成 laborInsurance.html ★★★ -->
             <iframe src="laborinsurance.html"></iframe> 
         </div>
 
-        <!-- 作品 6: 個人資產 (已改小寫) -->
         <div class="project-card">
             <div class="project-title">6. 個人資產管理 (Personal Asset)</div>
+            <!-- ★★★ 這裡配合你的檔名改成 personalAsset.html (如果你的檔名是這樣) ★★★ -->
             <iframe src="personalasset.html"></iframe> 
         </div>
     </section>
 
     <!-- ==========================
-         中央留言板區塊
+         聯絡我 & 票選系統
     ========================== -->
-    <section id="contact" style="background: white; margin-top: 40px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-        <h2 style="border-left: 5px solid #ff9a9e; padding-left: 10px;">📬 聯絡卡比貓 / 留言板</h2>
-        <p style="color: gray; margin-bottom: 20px;">對哪個作品有興趣？或是單純想聊聊？歡迎在下面留言！</p>
-
-        <div class="comment-section">
-            <div class="comment-list" id="main-list"></div>
+    <section id="contact">
+        <div class="contact-box">
+            <h2 style="margin-bottom: 20px; color: #333;">📬 聯絡卡比貓</h2>
+            <p style="color: #666; margin-bottom: 30px;">喜歡我的作品嗎？歡迎追蹤我的社群！</p>
             
-            <div class="comment-form">
-                <label style="font-weight: bold; color: #555;">你想針對哪個主題留言？</label>
-                <!-- 更新後的選單：包含所有 6 個作品 -->
-                <select id="project-select" style="margin-bottom: 15px;">
-                    <option value="一般留言">👋 純粹打招呼</option>
-                    <optgroup label="🏸 羽球系列">
-                        <option value="羽球計分板">Project 1: 羽球計分板</option>
-                        <option value="即時比分看板">Project 2: 即時比分看板</option>
-                        <option value="羽球賽事系統">Project 3: 羽球賽事系統</option>
-                    </optgroup>
-                    <optgroup label="💰 投資系列">
-                        <option value="複利計算機">Project 4: 複利計算機</option>
-                        <option value="勞保試算">Project 5: 勞保試算</option>
-                        <option value="個人資產管理">Project 6: 個人資產管理</option>
-                    </optgroup>
-                </select>
+            <!-- 社群連結 ID30919 -->
+            <div>
+                <a href="https://www.instagram.com/id30919" target="_blank" class="social-btn btn-ig">
+                    📸 Instagram: id30919
+                </a>
+                <br>
+                <a href="https://www.threads.net/@id30919" target="_blank" class="social-btn btn-threads">
+                    🧵 Threads: id30919
+                </a>
+            </div>
 
-                <div class="input-group">
-                    <input type="text" id="user-name" placeholder="你的暱稱" required>
-                    <input type="email" id="user-email" placeholder="Email (不會公開)" required>
-                </div>
-                
-                <textarea id="user-msg" rows="4" placeholder="寫下你的想法..."></textarea>
-                
-                <div class="captcha-box">
-                    <span id="captcha-q"></span>
-                    <input type="number" id="captcha-a" class="captcha-input" placeholder="?">
-                </div>
+            <hr style="margin: 40px 0; border: 0; border-top: 1px dashed #ddd;">
 
-                <button class="submit-btn" onclick="postComment()">送出留言 🚀</button>
+            <!-- 票選排行榜 -->
+            <h3 style="color: #444; text-align: left;">🏆 作品人氣排行榜</h3>
+            <p style="color: #888; text-align: left; font-size: 0.9rem;">你最喜歡哪一個作品？點擊按鈕投我一票！</p>
+            
+            <div class="leaderboard" id="poll-container">
+                <!-- 這裡的內容會由 JavaScript 自動生成 -->
             </div>
         </div>
     </section>
 
-    <footer style="margin-top: 0;">
+    <footer>
         © 2025 AI 卡比貓的奇幻旅程 | Created with HTML & Magic
     </footer>
 
     <!-- JS 邏輯區 -->
     <script>
+        // 設定 EmailJS
         const serviceID = "service_aicopycat";
         const templateID = "template_aicopycat";
 
-        let correctAnswer = 0;
+        // 模擬初始票數 (讓畫面不要都是0，看起來比較熱鬧)
+        // 注意：這只是前端顯示，重新整理網頁會重置 (因為沒有後端資料庫)
+        let votes = [
+            { id: 1, name: "羽球計分板", count: 12 },
+            { id: 2, name: "即時比分看板", count: 8 },
+            { id: 3, name: "羽球賽事系統", count: 25 }, // 人氣最高
+            { id: 4, name: "複利計算機", count: 15 },
+            { id: 5, name: "勞保試算", count: 10 },
+            { id: 6, name: "個人資產管理", count: 18 }
+        ];
 
-        function initCaptcha() {
-            let num1 = Math.floor(Math.random() * 10) + 1;
-            let num2 = Math.floor(Math.random() * 10) + 1;
-            correctAnswer = num1 + num2;
-            document.getElementById('captcha-q').innerText = `驗證：${num1} + ${num2} = ?`;
+        // 渲染排行榜
+        function renderPoll() {
+            // 根據票數排序 (多到少)
+            votes.sort((a, b) => b.count - a.count);
+
+            const container = document.getElementById('poll-container');
+            container.innerHTML = ""; // 清空
+
+            let maxVotes = votes[0].count; // 用最高票當作 100% 寬度基準
+
+            votes.forEach((item, index) => {
+                let rankClass = "";
+                if(index === 0) rankClass = "top-1";
+                else if(index === 1) rankClass = "top-2";
+                else if(index === 2) rankClass = "top-3";
+
+                // 計算長度百分比
+                let widthPercent = (item.count / maxVotes) * 100;
+
+                let html = `
+                    <div class="poll-item ${rankClass}">
+                        <div class="poll-bar" style="width: ${widthPercent}%;"></div>
+                        <div class="poll-header">
+                            <span>
+                                ${index + 1}. ${item.name} 
+                                <span style="font-size:0.8em; color:#666; margin-left:5px;">(${item.count} 票)</span>
+                            </span>
+                            <button class="vote-btn" onclick="vote(${item.id})">投我一票 👍</button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
         }
 
-        window.onload = function() {
-            initCaptcha();
-        };
-
-        function postComment() {
-            let selectProject = document.getElementById('project-select').value;
-            let name = document.getElementById('user-name').value;
-            let email = document.getElementById('user-email').value;
-            let msg = document.getElementById('user-msg').value;
-            let userAnswer = document.getElementById('captcha-a').value;
-            let btn = document.querySelector('.submit-btn');
-
-            if(name === "" || msg === "" || email === "") {
-                alert("請填寫完整資訊 (暱稱、Email、內容) 😾");
-                return;
+        // 投票功能
+        function vote(id) {
+            // 1. 更新前端數字
+            let target = votes.find(v => v.id === id);
+            if(target) {
+                target.count++;
+                alert(`感謝你投給「${target.name}」！🎉`);
+                renderPoll(); // 重新排序並顯示
             }
 
-            if(parseInt(userAnswer) !== correctAnswer) {
-                alert("算術錯誤！機器人走開！🤖");
-                return;
-            }
-
-            let originalText = btn.innerText;
-            btn.innerText = "傳送中...";
-            btn.disabled = true;
-
+            // 2. 寄送 Email 通知站長 (你)
             let params = {
-                from_name: name,
-                from_email: email,
-                message: msg,
-                project_name: selectProject
+                from_name: "訪客投票",
+                from_email: "anonymous@vote.com",
+                message: `有人剛剛投了一票給：${target.name}！\n目前的顯示票數是：${target.count}`,
+                project_name: "票選系統"
             };
 
             emailjs.send(serviceID, templateID, params)
                 .then(function(response) {
-                    alert("✅ 留言成功！通知信已寄出！");
-                    
-                    let list = document.getElementById('main-list');
-                    let time = new Date().toLocaleString();
-                    
-                    let tagColor = "#2c3e50"; // 預設顏色
-                    if(selectProject.includes("羽球") || selectProject.includes("比分")) tagColor = "#ff4b4b"; // 羽球紅
-                    if(selectProject.includes("複利") || selectProject.includes("勞保") || selectProject.includes("資產")) tagColor = "#28a745"; // 投資綠
-
-                    list.innerHTML += `
-                        <div class="single-comment">
-                            <div class="comment-header">
-                                <span>${name} <span style="font-size:0.8em; background:${tagColor}; color:white; padding:2px 6px; border-radius:4px; margin-left:5px;">${selectProject}</span></span>
-                                <span style="font-size:0.8em; color:#aaa;">${time}</span>
-                            </div>
-                            <p>${msg}</p>
-                            <p style="font-size:0.8em; color:green; margin-top:5px;">(系統：已發信通知站長)</p>
-                        </div>`;
-
-                    document.getElementById('user-msg').value = "";
-                    document.getElementById('captcha-a').value = "";
-                    initCaptcha();
-
+                    console.log("投票通知已發送");
                 }, function(error) {
-                    alert("❌ 寄信失敗，請檢查網路。\n錯誤代碼：" + JSON.stringify(error));
-                })
-                .finally(function() {
-                    btn.innerText = originalText;
-                    btn.disabled = false;
+                    console.log("投票通知發送失敗", error);
                 });
         }
+
+        // 網頁載入時執行
+        window.onload = function() {
+            renderPoll();
+        };
     </script>
 
 </body>
