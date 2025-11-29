@@ -155,33 +155,43 @@
     <section id="badminton">
         <h2 class="category-title">🏸 羽球程式系列</h2>
 
-        <!-- 7. 大船羽球管理系統 (NEW! 置頂) -->
-        <div class="project-card" style="border: 2px solid #667eea;">
-            <div class="project-title" style="background: #eef2ff; color: #5a67d8;">
+       <!-- 7. 大船羽球管理系統 (Full Stack System) -->
+        <div class="project-card" style="border: 2px solid #667eea; border-radius: 10px; overflow: hidden; background: white; margin-bottom: 30px;">
+            <div class="project-title" style="background: #eef2ff; color: #5a67d8; padding: 15px; font-weight: bold; border-bottom: 1px solid #e0e7ff;">
                 🔥 7. 大船羽球管理系統 (Full Stack System)
             </div>
             
-            <!-- 嵌入總覽頁 (入口) -->
-            <iframe src="https://badminton-signup-sys.web.app/" style="height: 600px;"></iframe>
+            <!-- 系統展示區 (圖片取代 iframe) -->
+            <div style="text-align: center; padding: 30px; background: #f8f9fa;">
+                <!-- 這裡的 src="images/demo.jpg" 是指你專案資料夾下的圖片 -->
+                <!-- 如果你還沒上傳圖片，暫時會顯示破圖，請看下方的教學上傳 -->
+                <a href="https://liff.line.me/2008582161-oBn2QBGq" target="_blank">
+                    <img src="images/demo.jpg" 
+                         alt="大船羽球系統手機畫面" 
+                         style="max-width: 300px; width: 100%; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border: 4px solid #333; transition: transform 0.3s;">
+                </a>
+                
+                <p style="margin-top: 20px; color: #666; font-size: 0.9rem;">
+                    👆 點擊圖片或下方按鈕開啟系統
+                </p>
+            </div>
             
             <!-- 快速傳送門按鈕 -->
-            <div class="portal-links">
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">👇 點擊下方按鈕快速切換功能 👇</p>
+            <div class="portal-links" style="padding: 20px; text-align: center; background: white; border-top: 1px solid #eee;">
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 15px;">👇 選擇身分進入 👇</p>
                 
-                <a href="https://badminton-signup-sys.web.app/home.html" target="_blank" class="portal-btn btn-signup">
-                    📝 進入報名頁
+                <!-- 1. 球友報名入口 (使用 LIFF 連結體驗最佳) -->
+                <a href="https://liff.line.me/2008582161-oBn2QBGq" target="_blank" style="display:inline-block; margin:5px; padding:10px 20px; background:#00B900; color:white; text-decoration:none; border-radius:30px; font-weight:bold; box-shadow: 0 4px 6px rgba(0,185,0,0.2);">
+                    📝 我要報名 (LINE)
                 </a>
 
-                <a href="https://badminton-signup-sys.web.app/view.html" target="_blank" class="portal-btn btn-view">
-                    👀 查看即時名單
-                </a>
-
-                <a href="https://badminton-signup-sys.web.app/manager.html" target="_blank" class="portal-btn btn-manager">
+                <!-- 2. 管理員後台 (使用 Firebase Hosting 連結) -->
+                <a href="https://badminton-signup-sys.web.app/manager.html" target="_blank" style="display:inline-block; margin:5px; padding:10px 20px; background:#4a5568; color:white; text-decoration:none; border-radius:30px; font-weight:bold; box-shadow: 0 4px 6px rgba(74,85,104,0.2);">
                     🔧 管理員後台
                 </a>
                 
-                <div style="font-size: 0.8rem; color: #888; margin-top: 5px;">
-                    (後台測試密碼：1234)
+                <div style="font-size: 0.8rem; color: #888; margin-top: 15px;">
+                    (測試用後台密碼：8888)
                 </div>
             </div>
         </div>
